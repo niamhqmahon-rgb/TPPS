@@ -209,15 +209,6 @@ html[dir="rtl"] .biz-line::after { transform-origin: right; }
 .biz-desc { font-size: 15px; line-height: 1.6; color: var(--muted); }
 .more { font-size: 14px; font-weight: 700; color: var(--navy); margin-top: auto; }
 
-/* Voltage levels */
-.volts { margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1px; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius-lg); overflow: hidden; }
-.volt { background: var(--navy); padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; }
-.volt .tag { font-family: var(--font-head); font-size: clamp(44px, 5vw, 64px); font-weight: 800; line-height: 1; color: #fff; letter-spacing: -.02em; }
-.volt .tag span { color: var(--orange); }
-.volt strong { font-size: 17px; color: #fff; }
-.volt p { margin: 0; font-size: 15px; color: var(--on-dark); }
-.volt ul { margin: 6px 0 0; padding-inline-start: 18px; font-size: 14px; color: var(--on-dark); }
-
 /* Process flow */
 .flow { position: relative; margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 32px 24px; }
 .flow::before { content: ""; position: absolute; top: 10px; inset-inline: 10px; height: 2px; background: linear-gradient(90deg, var(--navy), var(--orange)); }
@@ -262,6 +253,7 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 
 /* Placeholder notes (draft only: remove before launch) */
 .todo { display: inline-block; font-size: 12px; font-weight: 700; color: #7a3a00; background: #fff1e6; border: 1px dashed var(--orange); border-radius: 4px; padding: 2px 8px; }
+.ph-img.ph-text { min-height: 160px; margin-top: 32px; font-size: 15px; }
 .ph-img { display: grid; place-items: center; text-align: center; padding: 16px; background: repeating-linear-gradient(135deg, var(--band) 0 12px, #f6f8fa 12px 24px); border: 1px dashed var(--field); border-radius: var(--radius-lg); color: var(--muted); font-size: 14px; min-height: 220px; }
 
 /* Art panel: brand pattern card used where photos will go */
