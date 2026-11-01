@@ -131,9 +131,7 @@ TP.strings = {
     "about.clients.eyebrow": "مع من نعمل",
     "about.clients.title": "العملاء والاستشاريون والمقاولون الذين يبنون معهم.",
 
-    "contact.eyebrow": "تواصل معنا",
-    "contact.title.a": "لنتحدث عن",
-    "contact.title.b": "الطاقة",
+    "contact.title.a": "تواصل مع",
     "contact.q1": "زيارة موقع",
     "contact.q1.link": "اطلب مهندساً",
     "contact.q2": "الخدمات",
