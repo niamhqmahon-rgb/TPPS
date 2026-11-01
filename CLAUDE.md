@@ -20,6 +20,8 @@ now its own repo.
 - `js/i18n.js`: translations. English copy is written in `index.html`; `TP.strings.ar` holds every key.
 - `js/app.js`: router, language switch (sets `lang` and `dir="rtl"`), rendering, forms (mailto), header, reveal.
 - `assets/logo/`: full logo (colour and white) and logomark, extracted as vectors from the brand guidelines PDF.
+- `assets/images/hero-towers.jpg`: home hero image (original artwork: towers at dusk). Replace with a real
+  project photo, ideally 2400×1200 or larger; give it a new file name.
 - `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
