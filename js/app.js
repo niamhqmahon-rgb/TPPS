@@ -31,6 +31,7 @@
   $$("[data-i18n]").forEach(function (el) { TP.strings.en[el.dataset.i18n] = TP.strings.en[el.dataset.i18n] || el.textContent; });
   $$("[data-i18n-ph]").forEach(function (el) { TP.strings.en[el.dataset.i18nPh] = TP.strings.en[el.dataset.i18nPh] || el.placeholder; });
   $$("[data-i18n-aria]").forEach(function (el) { TP.strings.en[el.dataset.i18nAria] = TP.strings.en[el.dataset.i18nAria] || el.getAttribute("aria-label"); });
+  $$("[data-i18n-alt]").forEach(function (el) { TP.strings.en[el.dataset.i18nAlt] = TP.strings.en[el.dataset.i18nAlt] || el.alt; });
 
   function t(key) {
     var s = (TP.strings[lang] && TP.strings[lang][key]) || TP.strings.en[key] || key;
@@ -44,6 +45,7 @@
     $$("[data-i18n]").forEach(function (el) { el.textContent = t(el.dataset.i18n); });
     $$("[data-i18n-ph]").forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
     $$("[data-i18n-aria]").forEach(function (el) { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+    $$("[data-i18n-alt]").forEach(function (el) { el.alt = t(el.dataset.i18nAlt); });
     $$("[data-i18n-msg]").forEach(function (el) { el.textContent = t(el.dataset.i18nMsg); });
     $$("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
     renderAll();
