@@ -136,8 +136,14 @@
 
 <!-- ================= SERVICES ================= -->
 <div data-page="services" hidden>
-  <section class="hero short">
-    <div class="hero-art" aria-hidden="true"><img src="assets/illustrations/hero-grid.svg" alt=""></div>
+  <section class="hero short hero-photo-wrap">
+    <!-- Slideshow: one photo every 3 seconds (app.js). Add or remove <img> tags to change the set. -->
+    <div class="hero-art hero-slides" aria-hidden="true" data-slideshow="3000">
+      <img class="hero-photo is-active" src="assets/images/services-1.jpg" alt="" width="900" height="675">
+      <img class="hero-photo" src="assets/images/services-2.jpg" alt="" width="900" height="600" decoding="async">
+      <img class="hero-photo" src="assets/images/services-3.jpg" alt="" width="612" height="408" decoding="async">
+      <img class="hero-photo" src="assets/images/services-4.jpg" alt="" width="900" height="600" decoding="async">
+    </div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <h1 class="h1" style="margin-top:0" data-i18n="svc.title">Discover our end to end services.</h1>
@@ -210,7 +216,7 @@
     <div class="hero-shade" aria-hidden="true"></div>
     <img class="hero-mark" src="assets/logo/tpps-mark-white.svg" alt="" aria-hidden="true">
     <div class="wrap hero-inner">
-      <h1 class="h1" style="margin-top:0" data-i18n="about.title">Get to know TPPS.</h1>
+      <h1 class="h1" style="margin-top:0"><span data-i18n="about.title.a">Get to know</span> <span class="accent">TPPS</span>.</h1>
       <div class="bars" aria-hidden="true"><span></span><span></span></div>
       <p class="lead" data-i18n="about.sub">Three Phase Power System is an electrical contractor for low, medium and high voltage systems, based in Jeddah, Saudi Arabia.</p>
       <div class="btn-row">

@@ -23,6 +23,9 @@ now its own repo.
 - `assets/images/hero-power-lines.jpg`: home hero photo (power lines at sunset, 1740×1160, from Unsplash:
   free for commercial use under the Unsplash licence, no credit required).
   A real TPPS project photo can replace it later, ideally 2400 px wide or more; give it a new file name.
+- `assets/images/services-1.jpg` to `services-4.jpg`: Services hero slideshow (3 s per photo, `data-slideshow`
+  in `index.html`, logic in `app.js`). Supplied by the client at 612 to 900 px wide: replace with 1600 px+ versions
+  for sharpness, and confirm their licences.
 - `assets/images/team-standin.jpg`: stand in artwork for the About page team photo (engineers at a substation
   at sunset). Replace with a real team photo (landscape, about 1200 px wide or more).
 - `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.

@@ -197,6 +197,21 @@
     $$(".reveal:not(.in)").forEach(function (el) { if (io) io.observe(el); else el.classList.add("in"); });
   }
 
+  /* ---------- Hero slideshow (services) ----------
+     Advances every data-slideshow ms while its page is visible. Stays on the first
+     photo for visitors who ask for reduced motion. */
+
+  $$("[data-slideshow]").forEach(function (box) {
+    var slides = $$("img", box), i = 0, ms = +box.dataset.slideshow || 3000;
+    if (slides.length < 2 || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    setInterval(function () {
+      if (box.closest("[data-page]").hidden || document.hidden) return;
+      slides[i].classList.remove("is-active");
+      i = (i + 1) % slides.length;
+      slides[i].classList.add("is-active");
+    }, ms);
+  });
+
   /* ---------- Events ---------- */
 
   document.addEventListener("click", function (e) {

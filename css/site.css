@@ -193,6 +193,13 @@ html[dir="rtl"] .hero-shade, html[dir="rtl"] .hero-art { transform: scaleX(-1); 
   .hero-photo-wrap .hero-photo { object-position: 38% 70%; }
   .hero-photo-wrap .hero-shade { background: linear-gradient(180deg, rgba(0, 25, 55, .7) 0%, rgba(0, 25, 55, .45) 55%, rgba(0, 25, 55, .05) 100%); }
 }
+/* Services hero slideshow: photos stacked, the active one fades in. Not mirrored in Arabic. */
+.hero-slides .hero-photo { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; object-position: 50% 50%; }
+.hero-slides .hero-photo.is-active { opacity: 1; }
+html[dir="rtl"] .hero-slides { transform: none; }
+.hero.short.hero-photo-wrap .hero-shade { background: linear-gradient(90deg, rgba(0, 25, 55, .9) 0%, rgba(0, 25, 55, .7) 45%, rgba(0, 25, 55, .25) 100%); }
+@media (max-width: 700px) { .hero.short.hero-photo-wrap .hero-shade { background: rgba(0, 25, 55, .72); } }
+@media (prefers-reduced-motion: reduce) { .hero-slides .hero-photo { transition: none; } }
 .hero-mark { position: absolute; inset-block-end: -40px; inset-inline-end: clamp(-60px, -2vw, 0px); width: clamp(160px, 22vw, 320px); opacity: .07; pointer-events: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; padding: 0; list-style: none; }
 .chips li { font-size: 13px; font-weight: 700; letter-spacing: .06em; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .35); color: #fff; }
