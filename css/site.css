@@ -200,6 +200,16 @@ html[dir="rtl"] .hero-slides { transform: none; }
 .hero.short.hero-photo-wrap .hero-shade { background: linear-gradient(90deg, rgba(0, 25, 55, .9) 0%, rgba(0, 25, 55, .7) 45%, rgba(0, 25, 55, .25) 100%); }
 @media (max-width: 700px) { .hero.short.hero-photo-wrap .hero-shade { background: rgba(0, 25, 55, .72); } }
 @media (prefers-reduced-motion: reduce) { .hero-slides .hero-photo { transition: none; } }
+/* About hero: portrait office photo, warm graded with an orange glow (assets/images/about-office-warm.jpg).
+   Desktop: photo fills the end side of the header and fades into navy behind the text. Phone: full bleed. */
+.hero-about .hero-art { inset-inline-start: auto; width: 60%; }
+.hero-about .hero-photo { object-position: 50% 20%; }
+.hero-about .hero-shade { background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 40%, rgba(0, 40, 85, .55) 52%, rgba(0, 40, 85, 0) 72%); }
+@media (max-width: 900px) {
+  .hero-about .hero-art { width: 100%; }
+  .hero-about .hero-photo { object-position: 30% 45%; }
+  .hero-about .hero-shade { background: rgba(0, 25, 55, .62); }
+}
 .hero-mark { position: absolute; inset-block-end: -40px; inset-inline-end: clamp(-60px, -2vw, 0px); width: clamp(160px, 22vw, 320px); opacity: .07; pointer-events: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; padding: 0; list-style: none; }
 .chips li { font-size: 13px; font-weight: 700; letter-spacing: .06em; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .35); color: #fff; }
