@@ -20,8 +20,8 @@ now its own repo.
 - `js/i18n.js`: translations. English copy is written in `index.html`; `TP.strings.ar` holds every key.
 - `js/app.js`: router, language switch (sets `lang` and `dir="rtl"`), rendering, forms (mailto), header, reveal.
 - `assets/logo/`: full logo (colour and white) and logomark, extracted as vectors from the brand guidelines PDF.
-- `assets/images/hero-towers.jpg`: home hero image (original artwork: towers at dusk). Replace with a real
-  project photo, ideally 2400×1200 or larger; give it a new file name.
+- `assets/images/hero-power-lines.jpg`: home hero photo (power lines at sunset, 1740×1160, supplied by the client).
+  A real TPPS project photo can replace it later, ideally 2400 px wide or more; give it a new file name.
 - `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
@@ -42,8 +42,8 @@ now its own repo.
 - The guidelines leave the typeface as `{fontname}`; Montserrat (used in the guide's own text) is the stand in.
 
 ## Open before launch
-- Real photography (projects, team, site work). Image hosts were blocked when this draft was built, so the site
-  uses the hero illustration and brand pattern panels instead.
+- Real photography (projects, team, site work). The home hero has a photo; other page headers use the
+  illustration and the About page a brand pattern panel. Confirm the licence of the hero photo.
 - Confirm the brand typeface, service list, sectors, office hours, founding year, certifications, key projects
   and client logos.
 - Forms open the visitor's email app (mailto). Replace `send()` in `app.js` with a real endpoint.

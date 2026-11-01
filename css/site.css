@@ -186,10 +186,13 @@ html[dir="rtl"] .hero-shade, html[dir="rtl"] .hero-art { transform: scaleX(-1); 
 .hero h1 { max-width: 17ch; margin-top: 16px; }
 .hero .accent { color: var(--orange); }
 .hero .lead { color: #fff; }
-/* Home hero: full bleed image. Swap assets/images/hero-towers.jpg for a project photo (2400×1200 or larger). */
-.hero-photo-wrap .hero-photo { object-position: 70% 60%; }
-.hero-photo-wrap .hero-shade { background: linear-gradient(90deg, rgba(0, 40, 85, .82) 0%, rgba(0, 40, 85, .5) 45%, rgba(0, 40, 85, 0) 75%); }
-@media (max-width: 700px) { .hero-photo-wrap .hero-shade { background: linear-gradient(180deg, rgba(0, 40, 85, .75) 0%, rgba(0, 40, 85, .45) 60%, rgba(0, 40, 85, .2) 100%); } }
+/* Home hero: full bleed image. Photo: power lines at sunset (assets/images/hero-power-lines.jpg). */
+.hero-photo-wrap .hero-photo { object-position: 50% 78%; }
+.hero-photo-wrap .hero-shade { background: linear-gradient(90deg, rgba(0, 25, 55, .78) 0%, rgba(0, 25, 55, .45) 38%, rgba(0, 25, 55, 0) 65%); }
+@media (max-width: 700px) {
+  .hero-photo-wrap .hero-photo { object-position: 38% 70%; }
+  .hero-photo-wrap .hero-shade { background: linear-gradient(180deg, rgba(0, 25, 55, .7) 0%, rgba(0, 25, 55, .45) 55%, rgba(0, 25, 55, .05) 100%); }
+}
 .hero-mark { position: absolute; inset-block-end: -40px; inset-inline-end: clamp(-60px, -2vw, 0px); width: clamp(160px, 22vw, 320px); opacity: .07; pointer-events: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; padding: 0; list-style: none; }
 .chips li { font-size: 13px; font-weight: 700; letter-spacing: .06em; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .35); color: #fff; }
