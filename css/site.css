@@ -138,7 +138,7 @@ html[dir="rtl"] .btn:hover .arrow { transform: scaleX(-1) translateX(3px); }
 /* Header */
 .header {
   position: sticky; top: 0; z-index: 30;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, .6); /* 40% transparent */
   backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid rgba(0, 40, 85, .08);
   transition: box-shadow .2s;
