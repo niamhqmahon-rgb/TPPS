@@ -9,6 +9,7 @@ now its own repo.
 ## Tech
 - Plain HTML, CSS and vanilla JS. No framework, no build step. Keep all paths relative.
 - Single page app with hash routes: `#/`, `#/services`, `#/services/<service id>`, `#/services/request`,
+  `#/products`, `#/products/<category id>`, `#/products/quote`,
   `#/about`, `#/contact`, `#/privacy`, `#/terms`. A second path segment that matches an element id scrolls to it.
 - Preview: GitHub Pages from the working branch `claude/lucid-ptolemy-kh0c2q` (root folder):
   https://niamhqmahon-rgb.github.io/TPPS/ . Keep `.nojekyll`. Local: `python3 -m http.server 8000` in the repo root.
@@ -16,7 +17,7 @@ now its own repo.
 ## Structure
 - `index.html`: all pages (`<div data-page="...">`), header, footer.
 - `css/site.css`: all styles and `@font-face`. Brand colours are CSS variables in `:root`.
-- `js/data.js`: contact details, icons, services (with photos), sectors (EN + AR).
+- `js/data.js`: contact details, icons, services and products (with photos), sectors (EN + AR).
 - `js/i18n.js`: translations. English copy is written in `index.html`; `TP.strings.ar` holds every key.
 - `js/app.js`: router, language switch (sets `lang` and `dir="rtl"`), rendering, forms (mailto), header, reveal.
 - `assets/logo/`: full logo (colour and white) and logomark, extracted as vectors from the brand guidelines PDF.
@@ -30,6 +31,8 @@ now its own repo.
   glow on the ceiling light). Desktop shows it on the end side fading into navy; phones full bleed.
 - `assets/images/svc-earthing-standin.jpg`, `svc-maintenance-standin.jpg`: generated stand in artwork for two
   service rows (marked Draft on the page). Other service rows reuse the supplied photos (`photo` in `data.js`).
+- `assets/images/product-*.jpg`: Products page stand ins (hero slideshow and rows), cropped from the supplied
+  site photos. Product categories in `TP.products` are a first draft: replace with TPPS's real range and photos.
 - About story panel uses `services-4.jpg` (engineers in PPE at a cable installation).
 - `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
@@ -55,6 +58,7 @@ now its own repo.
 ## Open before launch
 - Real photography (projects, team, site work). The home hero has a photo; other page headers use the
   illustration. Earthing and maintenance service rows use stand in artwork; a real team photo is still to come.
+- Products page: real product range, descriptions and product photos (all marked Draft).
 - Confirm the brand typeface, service list, sectors, office hours, founding year, certifications, key projects
   and client logos.
 - Forms open the visitor's email app (mailto). Replace `send()` in `app.js` with a real endpoint.

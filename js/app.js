@@ -6,7 +6,7 @@
   "use strict";
 
   var TP = window.TP;
-  var PAGES = ["home", "services", "about", "contact", "privacy", "terms"];
+  var PAGES = ["home", "services", "products", "about", "contact", "privacy", "terms"];
   var KEY_LANG = "tp.lang";
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
@@ -106,6 +106,8 @@
         return "<li>" + icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "<span>" + esc(s[lang] || s.en) + "</span></li>";
       }).join("");
     });
+    $$('[data-render="products"]').forEach(function (el) { el.innerHTML = rows(TP.products); });
+    $$('[data-render="product-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.products); if (v) el.value = v; });
     $$('[data-render="service-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.services); if (v) el.value = v; });
     $$('[data-render="footer-services"]').forEach(function (el) {
       el.innerHTML = TP.services.slice(0, 5).map(function (s) { return '<a href="#/services/' + s.id + '">' + esc(pick(s).name) + "</a>"; }).join("");

@@ -26,6 +26,7 @@ TP.icons = {
   factory: '<path d="M2 20V9l6 4V9l6 4V4h6v16z"/><path d="M6 17h2M11 17h2M16 17h2"/>',
   building: '<rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>',
   road: '<path d="M4 22 8 2M20 22 16 2M12 4v3M12 11v3M12 18v3"/>',
+  gauge: '<path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
   drop: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>'
 };
@@ -67,4 +68,28 @@ TP.sectors = [
   { icon: "road", en: "Infrastructure & transport", ar: "البنية التحتية والنقل" },
   { icon: "drop", en: "Water & desalination", ar: "المياه وتحلية المياه" },
   { icon: "sun", en: "Renewables & storage", ar: "الطاقة المتجددة والتخزين" }
+];
+
+/* Products (catalogue categories). FIRST DRAFT: names, descriptions and photos are stand ins
+   until TPPS supplies the real product range. ids double as anchors: #/products/<id>.
+   Photos are crops of the supplied site photos (standin: true shows a Draft label). */
+TP.products = [
+  { id: "switchgear", photo: "product-switchgear.jpg", standin: true, icon: "switchgear",
+    en: { name: "Switchgear & contactors", desc: "LV and MV switchgear, ring main units, distribution boards, contactors and circuit breakers." },
+    ar: { name: "لوحات المفاتيح والملامسات", desc: "لوحات مفاتيح الجهد المنخفض والمتوسط والوحدات الحلقية الرئيسية ولوحات التوزيع والملامسات والقواطع." } },
+  { id: "protection", photo: "product-protection.jpg", standin: true, icon: "shield",
+    en: { name: "Protection & metering", desc: "Protection relays, energy meters, current and voltage transformers, and control components." },
+    ar: { name: "الحماية والقياس", desc: "مرحلات الحماية وعدادات الطاقة ومحولات التيار والجهد ومكونات التحكم." } },
+  { id: "cables", photo: "product-cables.jpg", standin: true, icon: "cable",
+    en: { name: "Cables & accessories", desc: "LV, MV and HV power cables, control cables, joints, terminations, lugs and glands." },
+    ar: { name: "الكابلات وملحقاتها", desc: "كابلات القوى للجهد المنخفض والمتوسط والعالي وكابلات التحكم والوصلات والنهايات والأطراف والجلندات." } },
+  { id: "solar", photo: "product-solar.jpg", standin: true, icon: "sun",
+    en: { name: "Solar inverters & storage", desc: "Grid tied inverters, battery storage, DC connectors and the cabling to connect them." },
+    ar: { name: "العاكسات الشمسية والتخزين", desc: "عاكسات متصلة بالشبكة وتخزين البطاريات وموصلات التيار المستمر والكابلات اللازمة لتوصيلها." } },
+  { id: "test", photo: "product-test.jpg", standin: true, icon: "gauge",
+    en: { name: "Test equipment", desc: "Multimeters, insulation resistance testers, earth testers and relay test sets." },
+    ar: { name: "معدات الاختبار", desc: "أجهزة القياس المتعددة وأجهزة قياس مقاومة العزل وأجهزة قياس التأريض وأجهزة اختبار المرحلات." } },
+  { id: "overhead", photo: "product-overhead.jpg", standin: true, icon: "pylon",
+    en: { name: "Overhead line materials", desc: "Conductors, insulators, fittings and hardware for overhead distribution and transmission lines." },
+    ar: { name: "مواد الخطوط الهوائية", desc: "الموصلات والعوازل والتجهيزات والملحقات لخطوط التوزيع والنقل الهوائية." } }
 ];
