@@ -34,7 +34,9 @@
   $$("[data-i18n-alt]").forEach(function (el) { TP.strings.en[el.dataset.i18nAlt] = TP.strings.en[el.dataset.i18nAlt] || el.alt; });
 
   function t(key) {
-    var s = (TP.strings[lang] && TP.strings[lang][key]) || TP.strings.en[key] || key;
+    // An empty string is a valid translation (word order differs between languages).
+    var tbl = TP.strings[lang] || {};
+    var s = Object.prototype.hasOwnProperty.call(tbl, key) ? tbl[key] : (TP.strings.en[key] || key);
     return s.replace("{email}", TP.contact.email);
   }
   function pick(obj) { return obj[lang] || obj.en; }
