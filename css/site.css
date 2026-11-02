@@ -270,6 +270,11 @@ html[dir="rtl"] .biz-line::after { transform-origin: right; }
 .pvm h3::before { content: ""; width: 10px; height: 10px; background: var(--orange); }
 .pvm p { margin: 12px 0 0; color: var(--on-dark); font-size: 15px; }
 
+/* CTA band: frosted brand orange, so it stands apart from the navy footer */
+.cta-band { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, 0) 60%), var(--orange); color: var(--navy); }
+.cta-band::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: url("../assets/illustrations/pattern-navy.svg") 0 0 / 216px 96px repeat; opacity: .035; }
+.cta-band > * { position: relative; }
+.cta-band .cta p { color: var(--navy); }
 /* CTA band */
 .cta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
 .cta p { margin: 10px 0 0; color: var(--on-dark); }

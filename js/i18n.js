@@ -54,7 +54,7 @@ TP.strings = {
     "home.svc.all": "جميع الخدمات",
     "home.values.eyebrow": "قيمنا",
     "home.values.title": "ما نؤمن به.",
-    "home.sectors.title": "بنية تحتية حيوية في أنحاء المملكة.",
+    "home.sectors.title": "بنية تحتية حيوية في أنحاء المملكة العربية السعودية.",
 
     "cta.title": "لديك مشروع؟",
     "cta.text": "أخبرنا بنطاق العمل وسنعود إليك بخطة.",
