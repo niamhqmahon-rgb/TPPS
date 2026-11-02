@@ -315,14 +315,11 @@ html[dir="rtl"] .biz-line::after { transform-origin: right; }
 
 /* Steps */
 .steps { margin: 40px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
-.steps li { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius-lg); padding: 24px; }
-.steps strong { display: block; font-size: 18px; color: #fff; }
-.steps span { color: var(--on-dark); font-size: 15px; }
+.steps li { background: #fff; border: 1px solid var(--line); border-inline-start: 4px solid var(--orange); border-radius: var(--radius-lg); padding: 20px 24px; }
+.steps strong { display: block; font-size: 18px; color: var(--navy); }
+.steps span { display: block; margin-top: 4px; color: #4a5058; font-size: 15px; }
 
 /* Request a site visit (services): light band so it stands apart from the navy footer */
-.request .steps li { background: #fff; border: 1px solid var(--line); border-inline-start: 4px solid var(--orange); }
-.request .steps strong { color: var(--navy); }
-.request .steps span { color: var(--muted); }
 
 /* Services page: photo next to each service, alternating sides */
 .svc-rows { margin-top: 48px; display: flex; flex-direction: column; gap: clamp(32px, 5vw, 64px); }

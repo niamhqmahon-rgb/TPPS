@@ -35,6 +35,8 @@ now its own repo.
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
 ## Rules when editing
+- **Cache busting:** `index.html` loads CSS and JS with `?v=<date><letter>`. Bump it on every change to those files,
+  otherwise visitors (GitHub Pages caches 10 min) get the new HTML with old CSS/JS. Changed images need a new file name.
 - **Every text change goes into both languages** (`data-i18n` key + Arabic in `TP.strings.ar`).
 - Use logical CSS (`inset-inline-start`, `margin-inline`, `text-align: start`) so RTL keeps working.
 - Copy style: short headlines ending in a full stop, eyebrow with an orange square above each heading,
