@@ -1,6 +1,5 @@
 /* TPPS: site content that is rendered as lists (English + Arabic).
-   Positioning, values and ways of working come from the TPPS Brand Guidelines (Nov. 2025).
-   The service list is a first draft: confirm scope with TPPS before launch. */
+   The service list is a first draft: confirm scope with TPPS before launch. Sectors are a draft too. */
 
 window.TP = window.TP || {};
 
@@ -58,36 +57,6 @@ TP.services = [
   { id: "maintenance", photo: "svc-maintenance-standin.jpg", standin: true, icon: "gear",
     en: { name: "Maintenance & support", desc: "Planned and corrective maintenance, thermographic surveys and condition assessment across the asset life cycle." },
     ar: { name: "الصيانة والدعم", desc: "صيانة مخططة وتصحيحية ومسوحات حرارية وتقييم للحالة طوال دورة حياة الأصول." } }
-];
-
-/* Core values (Brand Guidelines, page 06). */
-TP.values = [
-  { en: { name: "Creative", desc: "Develop smart, efficient electrical solutions that optimise performance, cost and sustainability for every project." },
-    ar: { name: "مبتكرون", desc: "نطوّر حلولاً كهربائية ذكية وفعّالة تحقق أفضل أداء وتكلفة واستدامة لكل مشروع." } },
-  { en: { name: "Accurate", desc: "Apply precise engineering, clear documentation and rigorous testing to ensure safe and compliant LV, MV and HV systems." },
-    ar: { name: "دقيقون", desc: "نطبّق هندسة دقيقة وتوثيقاً واضحاً واختبارات صارمة لضمان أنظمة جهد منخفض ومتوسط وعالٍ آمنة ومطابقة." } },
-  { en: { name: "Inclusive", desc: "Promote collaboration, openness and respect among our teams, partners and clients to deliver integrated power solutions." },
-    ar: { name: "شاملون", desc: "نعزّز التعاون والانفتاح والاحترام بين فرقنا وشركائنا وعملائنا لتقديم حلول طاقة متكاملة." } },
-  { en: { name: "Bold", desc: "Take on complex power challenges with confidence, using advanced technologies and methods to push industry standards forward." },
-    ar: { name: "جريئون", desc: "نواجه تحديات الطاقة المعقدة بثقة، مستخدمين تقنيات وأساليب متقدمة للارتقاء بمعايير القطاع." } },
-  { en: { name: "Reliable", desc: "Deliver on our promises with consistent quality, timely execution and dependable support throughout the entire asset life cycle." },
-    ar: { name: "موثوقون", desc: "نفي بوعودنا بجودة ثابتة وتنفيذ في الوقت المحدد ودعم يُعتمد عليه طوال دورة حياة الأصول." } }
-];
-
-/* Ways of working (tone of voice, Brand Guidelines, page 07). */
-TP.voice = [
-  { icon: "bolt",
-    en: { name: "Bold and adaptable", desc: "We embrace complex electrical challenges with confidence and respond quickly to site, design and operational changes to keep projects moving safely and on schedule." },
-    ar: { name: "جريئون ومرنون", desc: "نتعامل مع التحديات الكهربائية المعقدة بثقة، ونستجيب بسرعة لتغيرات الموقع والتصميم والتشغيل للحفاظ على سير المشاريع بأمان وفي موعدها." } },
-  { icon: "ruler",
-    en: { name: "Sleek and purposeful", desc: "We communicate with clarity and focus, presenting technical information in a way that is clean, professional and aligned to project objectives and standards." },
-    ar: { name: "واضحون وهادفون", desc: "نتواصل بوضوح وتركيز، ونقدّم المعلومات الفنية بطريقة منظمة ومهنية ومتوافقة مع أهداف المشروع ومعاييره." } },
-  { icon: "building",
-    en: { name: "Collaborative", desc: "We work closely with clients, consultants and contractors, translating technical requirements into clear actions to deliver fully integrated power solutions." },
-    ar: { name: "متعاونون", desc: "نعمل عن قرب مع العملاء والاستشاريين والمقاولين، ونحوّل المتطلبات الفنية إلى خطوات واضحة لتقديم حلول طاقة متكاملة." } },
-  { icon: "sun",
-    en: { name: "Future driven", desc: "We stay ahead of industry developments, championing modern, energy efficient and resilient technologies that prepare our clients' assets for tomorrow." },
-    ar: { name: "نتطلع إلى المستقبل", desc: "نواكب تطورات القطاع، وندعم التقنيات الحديثة والموفرة للطاقة والمرنة التي تُعدّ أصول عملائنا للمستقبل." } }
 ];
 
 /* Sectors served. Draft: confirm with TPPS. */

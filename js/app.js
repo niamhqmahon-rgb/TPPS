@@ -99,13 +99,6 @@
       var limit = +el.dataset.limit || 0;
       el.innerHTML = limit ? cards(TP.services.slice(3, 3 + limit), false) : rows(TP.services);
     });
-    $$('[data-render="values"]').forEach(function (el) {
-      el.innerHTML = TP.values.map(function (v, i) {
-        var c = pick(v);
-        return "<li><strong><small>0" + (i + 1) + "</small>" + esc(c.name) + "</strong><span>" + esc(c.desc) + "</span></li>";
-      }).join("");
-    });
-    $$('[data-render="voice"]').forEach(function (el) { el.innerHTML = cards(TP.voice, false); });
     $$('[data-render="sectors"]').forEach(function (el) {
       el.innerHTML = TP.sectors.map(function (s, i) {
         return "<li>" + icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "<span>" + esc(s[lang] || s.en) + "</span></li>";

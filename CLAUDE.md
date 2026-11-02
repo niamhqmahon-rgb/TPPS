@@ -16,7 +16,7 @@ now its own repo.
 ## Structure
 - `index.html`: all pages (`<div data-page="...">`), header, footer.
 - `css/site.css`: all styles and `@font-face`. Brand colours are CSS variables in `:root`.
-- `js/data.js`: contact details, icons, services, values, ways of working, sectors (EN + AR).
+- `js/data.js`: contact details, icons, services (with photos), sectors (EN + AR).
 - `js/i18n.js`: translations. English copy is written in `index.html`; `TP.strings.ar` holds every key.
 - `js/app.js`: router, language switch (sets `lang` and `dir="rtl"`), rendering, forms (mailto), header, reveal.
 - `assets/logo/`: full logo (colour and white) and logomark, extracted as vectors from the brand guidelines PDF.
