@@ -222,6 +222,20 @@ html[dir="rtl"] .hero-slides { transform: none; }
 html[dir="rtl"] .biz-line::after { transform-origin: right; }
 .biz-line:hover { border-color: var(--navy); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0, 40, 85, .1); }
 .biz-line:hover::after { transform: scaleX(1); }
+/* Home service line cards: frosted brand orange (#f26a1b) with navy text (contrast 5:1+). */
+.biz-line {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .3) 0%, rgba(255, 255, 255, .06) 55%), rgba(242, 106, 27, .9);
+  border-color: rgba(255, 255, 255, .55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 8px 24px rgba(242, 106, 27, .18);
+  backdrop-filter: blur(12px) saturate(1.2); -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  color: var(--navy);
+}
+.biz-line::after { background: var(--navy); }
+.biz-line:hover { border-color: rgba(255, 255, 255, .8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 16px 32px rgba(242, 106, 27, .28); }
+.biz-line .circle { background: rgba(255, 255, 255, .38); }
+.biz-line .circle svg { stroke: var(--navy); }
+.biz-line .biz-desc { color: var(--navy); }
+.biz-line .more { color: var(--navy); }
 .circle { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--c, var(--navy)) 12%, #fff); }
 .circle svg, .icon { width: 26px; height: 26px; fill: none; stroke: var(--c, var(--navy)); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .biz-name { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.3; }
