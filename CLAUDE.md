@@ -28,8 +28,9 @@ now its own repo.
   for sharpness, and confirm their licences.
 - `assets/images/about-office-warm.jpg`: About hero (supplied office photo, 900×1350, warm graded with an orange
   glow on the ceiling light). Desktop shows it on the end side fading into navy; phones full bleed.
-- `assets/images/team-standin.jpg`: stand in artwork for the About page team photo (engineers at a substation
-  at sunset). Replace with a real team photo (landscape, about 1200 px wide or more).
+- `assets/images/svc-earthing-standin.jpg`, `svc-maintenance-standin.jpg`: generated stand in artwork for two
+  service rows (marked Draft on the page). Other service rows reuse the supplied photos (`photo` in `data.js`).
+- About story panel uses `services-4.jpg` (engineers in PPE at a cable installation).
 - `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
@@ -51,7 +52,7 @@ now its own repo.
 
 ## Open before launch
 - Real photography (projects, team, site work). The home hero has a photo; other page headers use the
-  illustration and the About page a stand in team image.
+  illustration. Earthing and maintenance service rows use stand in artwork; a real team photo is still to come.
 - Confirm the brand typeface, service list, sectors, office hours, founding year, certifications, key projects
   and client logos.
 - Forms open the visitor's email app (mailto). Replace `send()` in `app.js` with a real endpoint.

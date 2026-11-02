@@ -76,6 +76,18 @@
     }).join("");
   }
 
+  // Services page: photo next to each service, alternating sides.
+  function rows(list) {
+    return list.map(function (s, i) {
+      var c = pick(s);
+      return '<article class="svc-row" id="' + s.id + '">' +
+        '<div class="svc-media"><img src="assets/images/' + s.photo + '" alt="' + esc(c.name) + '" loading="lazy" decoding="async">' +
+        (s.standin ? '<span class="todo">' + esc(t("todo.standin")) + "</span>" : "") + "</div>" +
+        '<div class="svc-text"><span class="circle">' + icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "</span>" +
+        "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></div></article>";
+    }).join("");
+  }
+
   function options(list) {
     return list.map(function (s) { return '<option value="' + esc(s.en.name) + '">' + esc(pick(s).name) + "</option>"; }).join("");
   }
@@ -85,7 +97,7 @@
     $$('[data-render="services"]').forEach(function (el) {
       // data-limit shows a subset (home); the full list on the services page gets anchor ids.
       var limit = +el.dataset.limit || 0;
-      el.innerHTML = limit ? cards(TP.services.slice(3, 3 + limit), false) : cards(TP.services, true);
+      el.innerHTML = limit ? cards(TP.services.slice(3, 3 + limit), false) : rows(TP.services);
     });
     $$('[data-render="values"]').forEach(function (el) {
       el.innerHTML = TP.values.map(function (v, i) {
@@ -170,7 +182,7 @@
     var target = sub && document.getElementById(sub);
     if (target) {
       target.scrollIntoView();
-      if (target.classList.contains("card")) { target.style.borderColor = "var(--orange)"; setTimeout(function () { target.style.borderColor = ""; }, 1600); }
+      if (target.classList.contains("card") || target.classList.contains("svc-row")) { target.style.borderColor = "var(--orange)"; setTimeout(function () { target.style.borderColor = ""; }, 1600); }
     } else if (changed || !sub) window.scrollTo(0, 0);
     if (changed) $("#main").focus({ preventScroll: true });
     reveal();

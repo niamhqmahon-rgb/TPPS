@@ -7,6 +7,7 @@ window.TP = window.TP || {};
 
 TP.strings = {
   en: {
+    "todo.standin": "Draft: stand in image",
     "err.required": "Please fill in the required fields.",
     "err.email": "Please enter a valid email address.",
     "err.send": "Sorry, your message could not be sent. Please email us directly at {email}.",
@@ -65,10 +66,8 @@ TP.strings = {
     "svc.title.c": " المتكاملة.",
     "svc.sub": "التصميم والتركيب والاختبار والتشغيل والصيانة، مع التزام تام بالسلامة والتميّز الفني.",
     "svc.cta": "اطلب زيارة موقع",
-    "svc.range.eyebrow": "خدماتنا",
     "svc.range.title": "ما ننفّذه في الموقع.",
 
-    "req.eyebrow": "زيارة موقع",
     "req.title": "اطلب زيارة موقع.",
     "req.text": "أخبرنا عن العمل وسنؤكد الموعد والمهندس.",
     "how.1.t": "المتطلبات",
@@ -115,7 +114,7 @@ TP.strings = {
     "about.panel.t": "آمنة. موثوقة. فعّالة.",
     "about.story.title.a": "مقاولات كهربائية تُنجز",
     "about.story.title.b": "كما يجب",
-    "about.panel.alt": "رسم توضيحي لثلاثة مهندسين من TPPS بخوذات السلامة في محطة فرعية عند الغروب",
+    "about.panel.alt": "مهندسون كهربائيون بخوذات وسترات عاكسة يعملون على تمديد الكابلات",
     "about.story.p1": "هدفنا إزالة العوائق الفنية وتقليل المخاطر وضمان أفضل أداء للبنية التحتية الحيوية. يبني عملاؤنا ويشغّلون وينمون بثقة لأن أنظمتهم الكهربائية آمنة وموثوقة وفعّالة.",
     "pvm.eyebrow": "تموضع العلامة",
     "pvm.title": "لماذا نفعل ما نفعله.",
@@ -164,8 +163,8 @@ TP.strings = {
     "terms.h3": "القانون الحاكم",
     "terms.p3": "تخضع هذه الشروط لأنظمة المملكة العربية السعودية.",
 
-    "todo.team": "مسودة: صورة مؤقتة، صورة الفريق لاحقاً",
     "todo.phases": "مكان مؤقت: معلومات عن الأطوار لاحقاً.",
+    "todo.standin": "مسودة: صورة مؤقتة",
     "todo.logo": "شعار عميل",
     "todo.confirm": "مسودة: للتأكيد",
     "todo.legal": "مسودة: تحتاج إلى مراجعة قانونية قبل الإطلاق.",

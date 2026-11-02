@@ -31,30 +31,31 @@ TP.icons = {
   drop: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>'
 };
 
-/* Services. ids double as anchors: #/services/<id> scrolls to the card. */
+/* Services. ids double as anchors: #/services/<id> scrolls to the row.
+   photo: file in assets/images (standin: true marks generated stand in artwork until real photos arrive). */
 TP.services = [
-  { id: "design", icon: "ruler",
+  { id: "design", photo: "about-office-warm.jpg", icon: "ruler",
     en: { name: "Design & engineering", desc: "Load flow, short circuit and cable sizing studies, single line diagrams, specifications and shop drawings." },
     ar: { name: "التصميم والهندسة", desc: "دراسات تدفق الأحمال وقصر الدائرة وتحديد مقاطع الكابلات، والمخططات أحادية الخط والمواصفات ورسومات التنفيذ." } },
-  { id: "install", icon: "tool",
+  { id: "install", photo: "services-2.jpg", icon: "tool",
     en: { name: "Installation & erection", desc: "Switchgear, transformers, distribution boards and cable systems installed to drawing and to standard." },
     ar: { name: "التركيب والتجميع", desc: "تركيب لوحات المفاتيح والمحولات ولوحات التوزيع وأنظمة الكابلات وفق المخططات والمعايير." } },
-  { id: "commissioning", icon: "bolt",
+  { id: "commissioning", photo: "services-1.jpg", icon: "bolt",
     en: { name: "Testing & commissioning", desc: "Pre commissioning tests, energisation and handover with complete, signed test records." },
     ar: { name: "الاختبار والتشغيل", desc: "اختبارات ما قبل التشغيل والتشغيل والتسليم مع سجلات اختبار كاملة وموقعة." } },
-  { id: "substations", icon: "switchgear",
+  { id: "substations", photo: "hero-power-lines.jpg", icon: "switchgear",
     en: { name: "Substations & switchgear", desc: "MV and HV substation works, ring main units, switchgear panels and transformer connections." },
     ar: { name: "المحطات الفرعية ولوحات المفاتيح", desc: "أعمال المحطات الفرعية للجهد المتوسط والعالي، والوحدات الحلقية الرئيسية، ولوحات المفاتيح، وتوصيل المحولات." } },
-  { id: "cables", icon: "cable",
+  { id: "cables", photo: "services-4.jpg", icon: "cable",
     en: { name: "Cable jointing & termination", desc: "LV, MV and HV cable laying, joints and terminations, plus cable testing and fault location." },
     ar: { name: "وصلات ونهايات الكابلات", desc: "مد الكابلات ووصلاتها ونهاياتها للجهد المنخفض والمتوسط والعالي، مع اختبار الكابلات وتحديد الأعطال." } },
-  { id: "protection", icon: "shield",
+  { id: "protection", photo: "services-3.jpg", icon: "shield",
     en: { name: "Protection & control", desc: "Relay testing by secondary injection, settings verification, interlocks and protection scheme checks." },
     ar: { name: "الحماية والتحكم", desc: "اختبار المرحلات بالحقن الثانوي والتحقق من الإعدادات والتعشيقات وفحص مخططات الحماية." } },
-  { id: "earthing", icon: "earth",
+  { id: "earthing", photo: "svc-earthing-standin.jpg", standin: true, icon: "earth",
     en: { name: "Earthing & lightning protection", desc: "Earthing system design, installation and resistance testing, and lightning protection for buildings and plants." },
     ar: { name: "التأريض والحماية من الصواعق", desc: "تصميم أنظمة التأريض وتركيبها وقياس مقاومتها، والحماية من الصواعق للمباني والمنشآت." } },
-  { id: "maintenance", icon: "gear",
+  { id: "maintenance", photo: "svc-maintenance-standin.jpg", standin: true, icon: "gear",
     en: { name: "Maintenance & support", desc: "Planned and corrective maintenance, thermographic surveys and condition assessment across the asset life cycle." },
     ar: { name: "الصيانة والدعم", desc: "صيانة مخططة وتصحيحية ومسوحات حرارية وتقييم للحالة طوال دورة حياة الأصول." } }
 ];
