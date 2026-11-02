@@ -50,8 +50,7 @@ TP.strings = {
 
 
 
-    "home.svc.eyebrow": "الخدمات",
-    "home.svc.title": "تميّز فني في كل موقع.",
+    "home.svc.title": "تميّز في الخدمة في كل موقع.",
     "home.svc.all": "جميع الخدمات",
     "home.values.eyebrow": "قيمنا",
     "home.values.title": "ما نؤمن به.",
