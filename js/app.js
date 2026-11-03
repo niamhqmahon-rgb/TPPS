@@ -134,7 +134,7 @@
       var c = pick(p), cat = TP.categories.filter(function (x) { return x.id === p.cat; })[0];
       var inList = !!quote[p.id];
       return '<article class="product">' +
-        '<div class="product-img">' + icon(cat.icon, "var(--primary)") + "</div>" +
+        '<div class="product-img">' + (p.photo ? '<img src="assets/images/' + p.photo + '" alt="" loading="lazy" decoding="async">' : icon(cat.icon, "var(--primary)")) + "</div>" +
         '<div class="product-body">' +
           '<span class="product-cat">' + esc(catName(p.cat)) + "</span>" +
           '<span class="product-name">' + esc(c.name) + "</span>" +

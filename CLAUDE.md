@@ -34,6 +34,8 @@ now its own repo.
 - Page header photos (restored after the clone): Services slideshow `services-1..4.jpg`, Products slideshow
   `product-switchgear/solar/cables/test.jpg` (3 s per photo, `data-slideshow`, logic in `app.js`), About
   `about-office-warm.jpg`. Consulting keeps the drawing; Contact, Privacy and Terms have no photo header.
+- `assets/images/products/<id>.jpg`: catalogue photos (same as the Energy Basics design artifact), `photo` in
+  `TP.products`. The battery storage cabinet has no photo yet (shows its icon).
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
