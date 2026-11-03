@@ -183,6 +183,7 @@ html[dir="rtl"] .hero-slides { transform: none; }
 .hero-about .hero-art { inset-inline-start: auto; width: 60%; }
 .hero-about .hero-photo { object-position: 50% 20%; }
 .hero-about .hero-shade { background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 40%, rgba(0, 40, 85, .55) 52%, rgba(0, 40, 85, 0) 72%); }
+.hero-consulting .hero-photo { object-position: 35% 50%; }
 @media (max-width: 900px) {
   .hero-about .hero-art { width: 100%; }
   .hero-about .hero-photo { object-position: 30% 45%; }

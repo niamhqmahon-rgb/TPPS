@@ -33,7 +33,8 @@ now its own repo.
   The close up shot with a branded work shirt was left out on purpose.
 - Page header photos (restored after the clone): Services slideshow `services-1..4.jpg`, Products slideshow
   `product-switchgear/solar/cables/test.jpg` (3 s per photo, `data-slideshow`, logic in `app.js`), About
-  `about-office-warm.jpg`. Consulting keeps the drawing; Contact, Privacy and Terms have no photo header.
+  `about-office-warm.jpg`, Consulting `consulting-tablet-warm.jpg` (supplied tablet photo, warm graded, same layout
+  as About; 612×408, which is iStock preview size: confirm licence and get a larger version); Contact, Privacy and Terms have no photo header.
 - `assets/images/products/<id>.jpg`: catalogue photos (same as the Energy Basics design artifact), `photo` in
   `TP.products`. The battery storage cabinet has no photo yet (shows its icon).
 - About story panel: team photo `services-4.jpg` (engineers in PPE) with the caption "Safe. Reliable. Efficient."
