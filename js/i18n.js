@@ -44,6 +44,7 @@ TP.strings = {
     "footer.legalname": "مؤسسة أنظمة الجهد الثلاثي للطاقة",
     "footer.cr": "س.ت 7052232563",
     "nav.label": "القائمة الرئيسية",
+    "nav.home": "الرئيسية",
     "nav.products": "المنتجات",
     "nav.services": "الخدمات",
     "nav.consulting": "الاستشارات",
