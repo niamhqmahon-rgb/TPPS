@@ -1,13 +1,12 @@
-/* TPPS: routing, language, rendered lists and forms.
-   Same structure as the Energy Basics draft: hash routes #/services, #/services/request, ...
-   A second path segment that matches an element id scrolls to it. */
+/* TPPS: routing, language, catalogue, quote list and forms (cloned from the Energy Basics site).
+   Hash routes as on the VoltGenics site: #/products, #/services/booking, ... */
 
 (function () {
   "use strict";
 
   var TP = window.TP;
-  var PAGES = ["home", "services", "products", "about", "contact", "privacy", "terms"];
-  var KEY_LANG = "tp.lang";
+  var PAGES = ["home", "products", "services", "consulting", "about", "contact", "privacy", "terms"];
+  var KEY_LANG = "tp.lang", KEY_QUOTE = "tp.quote", KEY_CONSENT = "tp.consent";
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -31,12 +30,9 @@
   $$("[data-i18n]").forEach(function (el) { TP.strings.en[el.dataset.i18n] = TP.strings.en[el.dataset.i18n] || el.textContent; });
   $$("[data-i18n-ph]").forEach(function (el) { TP.strings.en[el.dataset.i18nPh] = TP.strings.en[el.dataset.i18nPh] || el.placeholder; });
   $$("[data-i18n-aria]").forEach(function (el) { TP.strings.en[el.dataset.i18nAria] = TP.strings.en[el.dataset.i18nAria] || el.getAttribute("aria-label"); });
-  $$("[data-i18n-alt]").forEach(function (el) { TP.strings.en[el.dataset.i18nAlt] = TP.strings.en[el.dataset.i18nAlt] || el.alt; });
 
   function t(key) {
-    // An empty string is a valid translation (word order differs between languages).
-    var tbl = TP.strings[lang] || {};
-    var s = Object.prototype.hasOwnProperty.call(tbl, key) ? tbl[key] : (TP.strings.en[key] || key);
+    var s = (TP.strings[lang] && TP.strings[lang][key]) || TP.strings.en[key] || key;
     return s.replace("{email}", TP.contact.email);
   }
   function pick(obj) { return obj[lang] || obj.en; }
@@ -47,7 +43,6 @@
     $$("[data-i18n]").forEach(function (el) { el.textContent = t(el.dataset.i18n); });
     $$("[data-i18n-ph]").forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
     $$("[data-i18n-aria]").forEach(function (el) { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
-    $$("[data-i18n-alt]").forEach(function (el) { el.alt = t(el.dataset.i18nAlt); });
     $$("[data-i18n-msg]").forEach(function (el) { el.textContent = t(el.dataset.i18nMsg); });
     $$("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
     renderAll();
@@ -70,23 +65,10 @@
     $$("svg[data-icon]").forEach(function (svg) { svg.innerHTML = TP.icons[svg.dataset.icon] || ""; });
   }
 
-  function cards(list, withIds) {
-    return list.map(function (s, i) {
+  function cards(list, limit) {
+    return list.slice(0, limit || list.length).map(function (s) {
       var c = pick(s);
-      return '<article class="card"' + (withIds && s.id ? ' id="' + s.id + '"' : "") + ">" +
-        icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></article>";
-    }).join("");
-  }
-
-  // Services page: photo next to each service, alternating sides.
-  function rows(list) {
-    return list.map(function (s, i) {
-      var c = pick(s);
-      return '<article class="svc-row" id="' + s.id + '">' +
-        '<div class="svc-media"><img src="assets/images/' + s.photo + '" alt="' + esc(c.name) + '" loading="lazy" decoding="async">' +
-        (s.standin ? '<span class="todo">' + esc(t("todo.standin")) + "</span>" : "") + "</div>" +
-        '<div class="svc-text"><span class="circle">' + icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "</span>" +
-        "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></div></article>";
+      return '<article class="card">' + icon(s.icon) + "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></article>";
     }).join("");
   }
 
@@ -94,24 +76,116 @@
     return list.map(function (s) { return '<option value="' + esc(s.en.name) + '">' + esc(pick(s).name) + "</option>"; }).join("");
   }
 
+  function renderStatic() {
+    $$('[data-render="services"]').forEach(function (el) { el.innerHTML = cards(TP.services, +el.dataset.limit || 0); });
+    $$('[data-render="consulting"]').forEach(function (el) { el.innerHTML = cards(TP.consulting); });
+    $$('[data-render="service-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.services); if (v) el.value = v; });
+    $$('[data-render="consulting-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.consulting); if (v) el.value = v; });
+    $$('[data-render="footer-cats"]').forEach(function (el) {
+      el.innerHTML = TP.categories.map(function (c) { return '<a href="#/products/' + c.id + '">' + esc(c[lang] || c.en) + "</a>"; }).join("");
+    });
+    $$('[data-render="footer-services"]').forEach(function (el) {
+      el.innerHTML = TP.services.slice(0, 4).map(function (s) { return '<a href="#/services">' + esc(pick(s).name) + "</a>"; }).join("") +
+        '<a href="#/services/booking">' + esc(t("svc.cta")) + "</a>";
+    });
+  }
+
+  /* ---------- Catalogue ---------- */
+
+  var filter = { cat: "all", avail: "all", q: "" };
+  var quote = load(KEY_QUOTE, {}) || {};
+
+  function catName(id) {
+    var c = TP.categories.filter(function (x) { return x.id === id; })[0];
+    return c ? (c[lang] || c.en) : "";
+  }
+
+  function renderFilters() {
+    var cats = [{ id: "all", label: t("all") }].concat(TP.categories.map(function (c) { return { id: c.id, label: c[lang] || c.en }; }));
+    $("#cat-filters").innerHTML = cats.map(function (c) {
+      return '<button type="button" class="filter-opt" data-filter-cat="' + c.id + '" aria-pressed="' + (filter.cat === c.id) + '">' + esc(c.label) + "</button>";
+    }).join("");
+    var av = [["all", t("all")], ["stock", t("avail.stock")], ["order", t("avail.order")]];
+    $("#avail-filters").innerHTML = av.map(function (a) {
+      return '<button type="button" class="filter-opt" data-filter-avail="' + a[0] + '" aria-pressed="' + (filter.avail === a[0]) + '">' + esc(a[1]) + "</button>";
+    }).join("");
+    var parts = [];
+    if (filter.cat !== "all") parts.push(catName(filter.cat));
+    if (filter.avail !== "all") parts.push(t("avail." + filter.avail));
+    $("#filter-summary").textContent = parts.join(" · ");
+  }
+
+  function matches(p) {
+    if (filter.cat !== "all" && p.cat !== filter.cat) return false;
+    if (filter.avail === "stock" && !p.stock) return false;
+    if (filter.avail === "order" && p.stock) return false;
+    if (!filter.q) return true;
+    var hay = [p.en.name, p.en.spec, p.ar.name, p.ar.spec, catName(p.cat)].join(" ").toLowerCase();
+    return filter.q.toLowerCase().split(/\s+/).every(function (w) { return hay.indexOf(w) !== -1; });
+  }
+
+  function renderProducts() {
+    var list = TP.products.filter(matches);
+    $("#result-count").textContent = list.length;
+    $("#no-results").hidden = list.length > 0;
+    $("#products").innerHTML = list.map(function (p) {
+      var c = pick(p), cat = TP.categories.filter(function (x) { return x.id === p.cat; })[0];
+      var inList = !!quote[p.id];
+      return '<article class="product">' +
+        '<div class="product-img">' + icon(cat.icon, "var(--primary)") + "</div>" +
+        '<div class="product-body">' +
+          '<span class="product-cat">' + esc(catName(p.cat)) + "</span>" +
+          '<span class="product-name">' + esc(c.name) + "</span>" +
+          '<span class="product-spec">' + esc(c.spec) + "</span>" +
+          '<span class="avail' + (p.stock ? "" : " order") + '">' + esc(t(p.stock ? "avail.stock" : "avail.order")) + "</span>" +
+          '<button type="button" class="btn btn-dark" data-add="' + p.id + '" aria-pressed="' + inList + '">' + esc(t(inList ? "prod.added" : "prod.add")) + "</button>" +
+        "</div></article>";
+    }).join("");
+  }
+
+  /* ---------- Quote list ---------- */
+
+  function productById(id) { return TP.products.filter(function (p) { return p.id === id; })[0]; }
+
+  function renderQuote() {
+    var ids = Object.keys(quote).filter(productById);
+    var count = ids.reduce(function (n, id) { return n + quote[id]; }, 0);
+    $$("[data-quote-count]").forEach(function (el) { el.textContent = count; });
+    $("#quote-empty").hidden = ids.length > 0;
+    $("#quote-form").hidden = ids.length === 0;
+    $("#quote-items").innerHTML = ids.map(function (id) {
+      return '<div class="q-item"><span class="name">' + esc(pick(productById(id)).name) + "</span>" +
+        '<label><span class="sr-only">' + esc(t("qty")) + '</span><input type="number" min="1" value="' + quote[id] + '" data-qty="' + id + '"></label>' +
+        '<button type="button" data-remove="' + id + '">' + esc(t("remove")) + "</button></div>";
+    }).join("");
+  }
+
+  function setQuote(id, qty) {
+    if (qty > 0) quote[id] = qty; else delete quote[id];
+    save(KEY_QUOTE, quote);
+    renderQuote();
+    renderProducts();
+  }
+
+  var lastFocus = null;
+  function openQuote() {
+    lastFocus = document.activeElement;
+    $("#quote").hidden = false;
+    $('[data-sent="quote"]').hidden = true;
+    renderQuote();
+    $("#quote .icon-btn").focus();
+  }
+  function closeQuote() {
+    $("#quote").hidden = true;
+    if (lastFocus) lastFocus.focus();
+  }
+
   function renderAll() {
     fillIcons();
-    $$('[data-render="services"]').forEach(function (el) {
-      // data-limit shows a subset (home); the full list on the services page gets anchor ids.
-      var limit = +el.dataset.limit || 0;
-      el.innerHTML = limit ? cards(TP.services.slice(3, 3 + limit), false) : rows(TP.services);
-    });
-    $$('[data-render="sectors"]').forEach(function (el) {
-      el.innerHTML = TP.sectors.map(function (s, i) {
-        return "<li>" + icon(s.icon, i % 2 ? "var(--orange-ink)" : "") + "<span>" + esc(s[lang] || s.en) + "</span></li>";
-      }).join("");
-    });
-    $$('[data-render="products"]').forEach(function (el) { el.innerHTML = rows(TP.products); });
-    $$('[data-render="product-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.products); if (v) el.value = v; });
-    $$('[data-render="service-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.services); if (v) el.value = v; });
-    $$('[data-render="footer-services"]').forEach(function (el) {
-      el.innerHTML = TP.services.slice(0, 5).map(function (s) { return '<a href="#/services/' + s.id + '">' + esc(pick(s).name) + "</a>"; }).join("");
-    });
+    renderStatic();
+    renderFilters();
+    renderProducts();
+    renderQuote();
   }
 
   /* ---------- Forms ----------
@@ -120,6 +194,10 @@
 
   function send(kind, data) {
     var lines = Object.keys(data).filter(function (k) { return data[k]; }).map(function (k) { return k + ": " + data[k]; });
+    if (kind === "quote") {
+      lines.push("", "Items:");
+      Object.keys(quote).forEach(function (id) { var p = productById(id); if (p) lines.push("- " + quote[id] + " × " + p.en.name + " (" + p.en.spec + ")"); });
+    }
     var href = "mailto:" + TP.contact.email + "?subject=" + encodeURIComponent(t("mail.subject." + kind)) + "&body=" + encodeURIComponent(lines.join("\n"));
     window.location.href = href;
     return true;
@@ -150,6 +228,7 @@
     form.hidden = true;
     var ok = $('[data-sent="' + kind + '"]');
     if (ok) ok.hidden = false;
+    if (kind === "quote") { quote = {}; save(KEY_QUOTE, quote); renderProducts(); $$("[data-quote-count]").forEach(function (el) { el.textContent = 0; }); $("#quote-items").innerHTML = ""; }
   }
 
   /* ---------- Router ---------- */
@@ -173,14 +252,15 @@
     $$('[data-page="' + page + '"] [data-form]').forEach(function (f) { f.hidden = false; });
     $$('[data-page="' + page + '"] [data-sent]').forEach(function (s) { s.hidden = true; });
 
+    if (page === "products" && sub && TP.categories.some(function (c) { return c.id === sub; })) {
+      filter.cat = sub; renderFilters(); renderProducts();
+    }
     closeMenu();
     setTitle();
 
     var target = sub && document.getElementById(sub);
-    if (target) {
-      target.scrollIntoView();
-      if (target.classList.contains("card") || target.classList.contains("svc-row")) { target.style.borderColor = "var(--orange)"; setTimeout(function () { target.style.borderColor = ""; }, 1600); }
-    } else if (changed || !sub) window.scrollTo(0, 0);
+    if (target) target.scrollIntoView();
+    else if (changed || !sub) window.scrollTo(0, 0);
     if (changed) $("#main").focus({ preventScroll: true });
     reveal();
   }
@@ -206,26 +286,15 @@
     $$(".reveal:not(.in)").forEach(function (el) { if (io) io.observe(el); else el.classList.add("in"); });
   }
 
-  /* ---------- Hero slideshow (services) ----------
-     Advances every data-slideshow ms while its page is visible. Stays on the first
-     photo for visitors who ask for reduced motion. */
-
-  $$("[data-slideshow]").forEach(function (box) {
-    var slides = $$("img", box), i = 0, ms = +box.dataset.slideshow || 3000;
-    if (slides.length < 2 || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
-    setInterval(function () {
-      if (box.closest("[data-page]").hidden || document.hidden) return;
-      slides[i].classList.remove("is-active");
-      i = (i + 1) % slides.length;
-      slides[i].classList.add("is-active");
-    }, ms);
-  });
-
   /* ---------- Events ---------- */
 
   document.addEventListener("click", function (e) {
     var el;
     if ((el = e.target.closest("[data-lang]"))) return setLang(el.dataset.lang);
+    if ((el = e.target.closest("[data-add]"))) { var id = el.dataset.add; return setQuote(id, quote[id] ? 0 : 1); }
+    if ((el = e.target.closest("[data-remove]"))) return setQuote(el.dataset.remove, 0);
+    if ((el = e.target.closest("[data-filter-cat]"))) { filter.cat = el.dataset.filterCat; renderFilters(); return renderProducts(); }
+    if ((el = e.target.closest("[data-filter-avail]"))) { filter.avail = el.dataset.filterAvail; renderFilters(); return renderProducts(); }
     if (!(el = e.target.closest("[data-action]"))) return;
     switch (el.dataset.action) {
       case "toggle-menu":
@@ -233,14 +302,29 @@
         $("#mobile-menu").hidden = !open;
         el.setAttribute("aria-expanded", String(open));
         break;
+      case "toggle-filters":
+        var f = $("#filters"), closed = f.classList.toggle("closed");
+        el.setAttribute("aria-expanded", String(!closed));
+        break;
+      case "open-quote": openQuote(); break;
+      case "close-quote": closeQuote(); break;
       case "to-top": window.scrollTo(0, 0); break;
+      case "consent-ok": save(KEY_CONSENT, true); $("#consent").hidden = true; break;
+      case "cookie-settings": $("#consent").hidden = false; $("#consent .btn").focus(); break;
     }
+  });
+
+  document.addEventListener("change", function (e) {
+    var el = e.target.closest("[data-qty]");
+    if (el) setQuote(el.dataset.qty, Math.max(0, parseInt(el.value, 10) || 0));
   });
 
   document.addEventListener("submit", onSubmit);
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !$("#mobile-menu").hidden) { closeMenu(); $('[data-action="toggle-menu"]').focus(); }
+    if (e.key === "Escape" && !$("#quote").hidden) closeQuote();
   });
+
+  $("#search").addEventListener("input", function (e) { filter.q = e.target.value.trim(); renderProducts(); });
   window.addEventListener("hashchange", route);
   window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -253,4 +337,5 @@
   applyLang();
   route();
   onScroll();
+  if (!load(KEY_CONSENT, false)) $("#consent").hidden = false;
 })();

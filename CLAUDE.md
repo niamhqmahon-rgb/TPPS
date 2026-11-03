@@ -7,34 +7,28 @@ restyled to the TPPS Brand Guidelines (Nov. 2025). First drafted in a `tpps/` fo
 now its own repo.
 
 ## Tech
+- **Cloned from the Energy Basics site** (`claude/lucid-cray-84bk01` in the EnergyBasics repo) on 3 Nov 2026 at the
+  client's request: same structure, pages, components and copy, with TPPS colours, logo, contact details and the
+  home hero photo. The earlier TPPS specific pages (photo slideshows, service photo rows, values) were replaced;
+  they are in git history before that date if needed.
 - Plain HTML, CSS and vanilla JS. No framework, no build step. Keep all paths relative.
-- Single page app with hash routes: `#/`, `#/services`, `#/services/<service id>`, `#/services/request`,
-  `#/products`, `#/products/<category id>`, `#/products/quote`,
-  `#/about`, `#/contact`, `#/privacy`, `#/terms`. A second path segment that matches an element id scrolls to it.
+- Single page app with hash routes: `#/`, `#/products`, `#/products/<category>`, `#/services`, `#/services/booking`,
+  `#/consulting`, `#/consulting/scoping`, `#/about`, `#/contact`, `#/privacy`, `#/terms`.
+  A second path segment that matches an element id scrolls to it.
 - Preview: GitHub Pages from the working branch `claude/lucid-ptolemy-kh0c2q` (root folder):
   https://niamhqmahon-rgb.github.io/TPPS/ . Keep `.nojekyll`. Local: `python3 -m http.server 8000` in the repo root.
 
 ## Structure
-- `index.html`: all pages (`<div data-page="...">`), header, footer.
-- `css/site.css`: all styles and `@font-face`. Brand colours are CSS variables in `:root`.
-- `js/data.js`: contact details, icons, services and products (with photos), sectors (EN + AR).
+- `index.html`: all pages (`<div data-page="...">`), header, footer, consent notice, quote drawer.
+- `css/site.css`: all styles and `@font-face`. Brand colours are CSS variables in `:root` (TPPS palette mapped onto
+  the Energy Basics variable names: `--primary` TPPS blue, `--accent`/`--sky` TPPS orange).
+- `js/data.js`: contact details, icons, product categories, sample products, services, consulting areas (EN + AR).
 - `js/i18n.js`: translations. English copy is written in `index.html`; `TP.strings.ar` holds every key.
-- `js/app.js`: router, language switch (sets `lang` and `dir="rtl"`), rendering, forms (mailto), header, reveal.
-- `assets/logo/`: full logo (colour and white) and logomark, extracted as vectors from the brand guidelines PDF.
-- `assets/images/hero-power-lines.jpg`: home hero photo (power lines at sunset, 1740×1160, from Unsplash:
-  free for commercial use under the Unsplash licence, no credit required).
-  A real TPPS project photo can replace it later, ideally 2400 px wide or more; give it a new file name.
-- `assets/images/services-1.jpg` to `services-4.jpg`: Services hero slideshow (3 s per photo, `data-slideshow`
-  in `index.html`, logic in `app.js`). Supplied by the client at 612 to 900 px wide: replace with 1600 px+ versions
-  for sharpness, and confirm their licences.
-- `assets/images/about-office-warm.jpg`: About hero (supplied office photo, 900×1350, warm graded with an orange
-  glow on the ceiling light). Desktop shows it on the end side fading into navy; phones full bleed.
-- `assets/images/svc-earthing-standin.jpg`, `svc-maintenance-standin.jpg`: generated stand in artwork for two
-  service rows (marked Draft on the page). Other service rows reuse the supplied photos (`photo` in `data.js`).
-- `assets/images/product-*.jpg`: Products page stand ins (hero slideshow and rows), cropped from the supplied
-  site photos. Product categories in `TP.products` are a first draft: replace with TPPS's real range and photos.
-- About story panel uses `services-4.jpg` (engineers in PPE at a cable installation).
-- `assets/illustrations/`: `hero-grid.svg` (blueprint and three phase waveform) and the brand pattern tile.
+- `js/app.js`: router, language switch, catalogue filters and search, quote list, forms (mailto), header, reveal.
+- `assets/logo/tpps-logo-en.svg`, `tpps-logo-white-en.svg`: TPPS logo without the Arabic line (client request),
+  vectors from the brand guidelines PDF. `tpps-mark*.svg`: logomark only.
+- `assets/images/hero-power-lines.jpg`: home hero photo (power lines at sunset, 1740×1160, Unsplash licence).
+- `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
 ## Rules when editing
@@ -56,12 +50,10 @@ now its own repo.
 - The guidelines leave the typeface as `{fontname}`; Montserrat (used in the guide's own text) is the stand in.
 
 ## Open before launch
-- Real photography (projects, team, site work). The home hero has a photo; other page headers use the
-  illustration. Earthing and maintenance service rows use stand in artwork; a real team photo is still to come.
-- Products page: real product range, descriptions and product photos (all marked Draft).
-- Confirm the brand typeface, service list, sectors, office hours, founding year, certifications, key projects
-  and client logos.
+- Content is still the Energy Basics draft copy (business lines, sample products, services, consulting): replace
+  with TPPS's real offering. Placeholders in `[brackets]` and yellow "Draft" labels remain.
+- Real photography for product, service, about and team sections; client logos.
+- Confirm the brand typeface, office hours, founding year, certifications, key projects.
 - Forms open the visitor's email app (mailto). Replace `send()` in `app.js` with a real endpoint.
 - Arabic is a draft translation: needs review by a native speaker.
 - Privacy policy and terms are drafts: need legal review (Saudi PDPL). Hosting provider placeholder `[provider]`.
-- Remove the orange "Draft" labels (`.todo`) and client logo placeholders (`.ph-img`).
