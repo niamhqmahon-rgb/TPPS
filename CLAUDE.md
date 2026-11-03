@@ -31,6 +31,9 @@ now its own repo.
 - `assets/images/svc-*.jpg`: service photos (480×480) on the service cards (`photo` in `TP.services`). Five are the
   client's site photos from the Energy Basics design artifact; `svc-maintenance.jpg` is a crop of the hero photo.
   The close up shot with a branded work shirt was left out on purpose.
+- Page header photos (restored after the clone): Services slideshow `services-1..4.jpg`, Products slideshow
+  `product-switchgear/solar/cables/test.jpg` (3 s per photo, `data-slideshow`, logic in `app.js`), About
+  `about-office-warm.jpg`. Consulting keeps the drawing; Contact, Privacy and Terms have no photo header.
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 

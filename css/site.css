@@ -171,6 +171,23 @@ html[dir="rtl"] .hero-shade { transform: scaleX(-1); }
 .hero-home .hero-shade { background: linear-gradient(90deg, rgba(0, 25, 55, .8) 0%, rgba(0, 25, 55, .5) 40%, rgba(0, 25, 55, 0) 70%); }
 @media (max-width: 700px) { .hero-home .hero-shade { background: linear-gradient(180deg, rgba(0, 25, 55, .72) 0%, rgba(0, 25, 55, .45) 60%, rgba(0, 25, 55, .15) 100%); } }
 html[dir="rtl"] .hero-home .hero-art { transform: scaleX(-1); }
+/* Services and Products heroes: photo slideshow (one photo every 3 s, app.js). Not mirrored in Arabic. */
+.hero-slides .hero-photo { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; object-position: 50% 50%; }
+.hero-slides .hero-photo.is-active { opacity: 1; }
+html[dir="rtl"] .hero-slides { transform: none; }
+.hero-photo-wrap .hero-shade { background: linear-gradient(90deg, rgba(0, 25, 55, .9) 0%, rgba(0, 25, 55, .7) 45%, rgba(0, 25, 55, .25) 100%); }
+@media (max-width: 700px) { .hero-photo-wrap .hero-shade { background: rgba(0, 25, 55, .72); } }
+@media (prefers-reduced-motion: reduce) { .hero-slides .hero-photo { transition: none; } }
+
+/* About hero: warm graded office photo on the end side, fading into navy behind the text. */
+.hero-about .hero-art { inset-inline-start: auto; width: 60%; }
+.hero-about .hero-photo { object-position: 50% 20%; }
+.hero-about .hero-shade { background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 40%, rgba(0, 40, 85, .55) 52%, rgba(0, 40, 85, 0) 72%); }
+@media (max-width: 900px) {
+  .hero-about .hero-art { width: 100%; }
+  .hero-about .hero-photo { object-position: 30% 45%; }
+  .hero-about .hero-shade { background: rgba(0, 25, 55, .62); }
+}
 .hero-inner { position: relative; width: 100%; padding-block: clamp(72px, 10vw, 128px); }
 .hero h1 { max-width: 18ch; margin-top: 14px; }
 .hero .accent { color: var(--sky); }
