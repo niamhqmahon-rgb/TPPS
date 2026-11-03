@@ -68,7 +68,9 @@
   function cards(list, limit) {
     return list.slice(0, limit || list.length).map(function (s) {
       var c = pick(s);
-      return '<article class="card">' + icon(s.icon) + "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></article>";
+      // Services carry a photo (assets/images); other lists keep the icon only.
+      var media = s.photo ? '<img class="card-photo" src="assets/images/' + s.photo + '" alt="" loading="lazy" decoding="async" width="480" height="480">' : "";
+      return '<article class="card' + (s.photo ? " has-photo" : "") + '">' + media + '<div class="card-body">' + icon(s.icon) + "<h3>" + esc(c.name) + "</h3><p>" + esc(c.desc) + "</p></div></article>";
     }).join("");
   }
 

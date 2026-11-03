@@ -28,6 +28,9 @@ now its own repo.
 - `assets/logo/tpps-logo-en.svg`, `tpps-logo-white-en.svg`: TPPS logo without the Arabic line (client request),
   vectors from the brand guidelines PDF. `tpps-mark*.svg`: logomark only.
 - `assets/images/hero-power-lines.jpg`: home hero photo (power lines at sunset, 1740×1160, Unsplash licence).
+- `assets/images/svc-*.jpg`: service photos (480×480) on the service cards (`photo` in `TP.services`). Five are the
+  client's site photos from the Energy Basics design artifact; `svc-maintenance.jpg` is a crop of the hero photo.
+  The close up shot with a branded work shirt was left out on purpose.
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 

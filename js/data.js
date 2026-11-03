@@ -81,22 +81,22 @@ TP.products = [
 ];
 
 TP.services = [
-  { id: "install", icon: "tool",
+  { id: "install", photo: "svc-install.jpg", icon: "tool",
     en: { name: "Installation & erection", desc: "Switchgear, transformers and cable systems installed by certified crews, to drawing and to standard." },
     ar: { name: "التركيب والتجميع", desc: "تركيب المفاتيح والمحولات وأنظمة الكابلات بواسطة فرق معتمدة وفق المخططات والمعايير." } },
-  { id: "commissioning", icon: "bolt",
+  { id: "commissioning", photo: "svc-commissioning.jpg", icon: "bolt",
     en: { name: "Testing & commissioning", desc: "Pre commissioning tests, energisation and handover with full test records." },
     ar: { name: "الاختبار والتشغيل", desc: "اختبارات ما قبل التشغيل والتشغيل والتسليم مع سجلات اختبار كاملة." } },
-  { id: "protection", icon: "shield",
+  { id: "protection", photo: "svc-protection.jpg", icon: "shield",
     en: { name: "Protection relay testing", desc: "Secondary injection, settings verification and scheme checks." },
     ar: { name: "اختبار مرحلات الحماية", desc: "الحقن الثانوي والتحقق من الإعدادات وفحص مخططات الحماية." } },
-  { id: "cables", icon: "cable",
+  { id: "cables", photo: "svc-cables.jpg", icon: "cable",
     en: { name: "Cable jointing & termination", desc: "LV, MV and HV joints and terminations, plus cable fault location." },
     ar: { name: "وصلات ونهايات الكابلات", desc: "وصلات ونهايات للجهد المنخفض والمتوسط والعالي، إضافة إلى تحديد أعطال الكابلات." } },
-  { id: "transformers", icon: "transformer",
+  { id: "transformers", photo: "svc-transformers.jpg", icon: "transformer",
     en: { name: "Transformer services", desc: "Oil testing and treatment, inspections and condition assessment." },
     ar: { name: "خدمات المحولات", desc: "اختبار الزيت ومعالجته والفحوصات وتقييم الحالة." } },
-  { id: "maintenance", icon: "gear",
+  { id: "maintenance", photo: "svc-maintenance.jpg", icon: "gear",
     en: { name: "Maintenance & O&M", desc: "Planned and corrective maintenance for substations and renewable plants." },
     ar: { name: "الصيانة والتشغيل", desc: "صيانة مخططة وتصحيحية للمحطات الفرعية ومحطات الطاقة المتجددة." } }
 ];
