@@ -210,8 +210,8 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 .card.has-photo .card-body { padding: 20px 24px 24px; }
 .card-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 
-/* Home: field services on TPPS blue, so it reads as its own section */
-.band-blue { position: relative; background: var(--primary); color: #fff; }
+/* Home: field services on TPPS navy (same as the footer), so it reads as its own section */
+.band-blue { position: relative; background: var(--navy); color: #fff; }
 .band-blue .eyebrow { color: #fff; }
 .band-blue h2 { color: #fff; }
 .band-blue .btn-sky { background: var(--accent); color: var(--navy); }
@@ -219,7 +219,7 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 .band-blue .card { border-color: transparent; box-shadow: 0 14px 30px rgba(0, 20, 45, .25); }
 
 /* CTA band: TPPS orange, so it is clearly separate from the navy footer */
-.cta-band { background: linear-gradient(135deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, 0) 60%), var(--accent); color: var(--navy); }
+.cta-band { margin-bottom: 24px; background: linear-gradient(135deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, 0) 60%), var(--accent); color: var(--navy); }
 .cta-band h2 { color: var(--navy); }
 .cta-band .cta p { color: var(--navy); }
 
