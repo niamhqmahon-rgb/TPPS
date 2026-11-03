@@ -322,8 +322,8 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 .facts div { background: #fff; padding: 28px 24px; display: flex; flex-direction: column; gap: 4px; }
 .facts strong { font-family: var(--font-head); font-size: 24px; color: var(--navy); }
 .facts span { font-size: 14px; color: var(--muted); }
-.logos { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.logos .ph-img { min-height: 88px; }
+.logos { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+.logos .ph-img { min-height: 170px; font-size: 15px; }
 
 /* Contact */
 .contact-list { display: flex; flex-direction: column; gap: 18px; margin-top: 32px; }
