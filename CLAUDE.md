@@ -36,6 +36,7 @@ now its own repo.
   `about-office-warm.jpg`. Consulting keeps the drawing; Contact, Privacy and Terms have no photo header.
 - `assets/images/products/<id>.jpg`: catalogue photos (same as the Energy Basics design artifact), `photo` in
   `TP.products`. The battery storage cabinet has no photo yet (shows its icon).
+- About story panel: team photo `services-4.jpg` (engineers in PPE) with the caption "Safe. Reliable. Efficient."
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
