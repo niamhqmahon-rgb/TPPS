@@ -243,6 +243,14 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 .cta-band h2 { color: var(--navy); }
 .cta-band .cta p { color: var(--navy); }
 
+/* Consulting topic cards: lift and soft shadow on hover (as in the Energy Basics design) */
+[data-render="consulting"] .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+[data-render="consulting"] .card:hover { transform: translateY(-3px); border-color: var(--field); box-shadow: 0 16px 36px rgba(0, 40, 85, .1); }
+@media (prefers-reduced-motion: reduce) {
+  [data-render="consulting"] .card { transition: none; }
+  [data-render="consulting"] .card:hover { transform: none; }
+}
+
 /* Values */
 .values { margin: 40px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; }
 .values li { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 20px; font-weight: 700; color: var(--navy); }
