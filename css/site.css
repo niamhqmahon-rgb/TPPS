@@ -241,7 +241,7 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 [data-page] > section.dark:last-child { margin-bottom: 24px; }
 .cta-band { margin-bottom: 24px; background: linear-gradient(135deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, 0) 60%), var(--accent); color: var(--navy); }
 .cta-band h2 { color: var(--navy); }
-.cta-band .cta p { color: var(--navy); }
+.cta-band .cta p { color: var(--navy); font-weight: 600; }
 
 /* Consulting topic cards: lift and soft shadow on hover (as in the Energy Basics design) */
 [data-render="consulting"] .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
