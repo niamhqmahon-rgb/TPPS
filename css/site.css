@@ -313,6 +313,7 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 .form-ok strong { font-family: var(--font-head); font-size: 26px; color: var(--navy); }
 .form-err { background: var(--error-bg); border: 1px solid var(--error-line); color: var(--error); border-radius: var(--radius); padding: 12px 14px; font-size: 14px; }
 .dark .panel { color: var(--ink); }
+.dark .panel h2, .dark .panel h3 { color: var(--navy); }
 
 /* Steps */
 .steps { margin: 40px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; counter-reset: step; }
