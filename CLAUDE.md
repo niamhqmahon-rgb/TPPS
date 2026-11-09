@@ -41,6 +41,12 @@ now its own repo.
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
 
+## Hosting
+- **Hostinger** (static files). `.htaccess` in the root: forces HTTPS, hides dot files and `.md`, security headers
+  incl. a Content-Security-Policy (no inline scripts, no third party scripts, styles, fonts or frames). If you add an
+  external service (map, analytics, form backend), extend the CSP for it. Upload a zip of the site files (not the
+  notes) and extract it in `public_html`.
+
 ## Rules when editing
 - **Cache busting:** `index.html` loads CSS and JS with `?v=<date><letter>`. Bump it on every change to those files,
   otherwise visitors (GitHub Pages caches 10 min) get the new HTML with old CSS/JS. Changed images need a new file name.

@@ -1,0 +1,49 @@
+# TPPS: server settings for Hostinger (read by LiteSpeed / Apache).
+# Keep this file in the site root, next to index.html.
+
+# Always use HTTPS (switch on the free SSL certificate in hPanel first).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# No folder listings.
+Options -Indexes
+
+# Hide hidden files and folders (e.g. .git from a Git deployment), except .well-known (SSL checks).
+RedirectMatch 404 /\.(?!well-known)
+
+# Hide internal project notes.
+<FilesMatch "\.md$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+
+# Security headers.
+<IfModule mod_headers.c>
+  # Browsers only ever use HTTPS for this site (one year).
+  Header always set Strict-Transport-Security "max-age=31536000"
+  # Only load scripts, styles, fonts and images from this site. No frames, no third party services.
+  # Inline style attributes are allowed because the design uses them; inline scripts are not.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+  # Other sites may not show this site inside a frame.
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
+
+# Caching: pages, styles and scripts are always checked for a newer version (so edits show up
+# right away); fonts and images may be stored by the browser for 30 days, so give a changed
+# image a new file name.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(woff2|jpg|jpeg|png|webp|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
