@@ -299,6 +299,7 @@ html[dir="rtl"] .flow::before { background: linear-gradient(270deg, var(--navy),
 
 /* Forms */
 .panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(22px, 3vw, 40px); box-shadow: 0 10px 28px rgba(0, 40, 85, .06); }
+.panel-orange { border: 2px solid var(--accent); }
 .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px 64px; }
 .form { display: flex; flex-direction: column; gap: 16px; }
 .form .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; }

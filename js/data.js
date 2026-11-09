@@ -72,7 +72,7 @@ TP.products = [
   { id: "inv-100", photo: "products/inv-100.jpg", cat: "renewables", stock: false,
     en: { name: "Solar string inverter, 100 kW", spec: "Grid tied, IP66" },
     ar: { name: "عاكس شمسي، 100 ك.و", spec: "متصل بالشبكة، IP66" } },
-  { id: "bess-250", cat: "renewables", stock: false,
+  { id: "bess-250", photo: "products/bess-250.jpg", cat: "renewables", stock: false,
     en: { name: "Battery storage cabinet, 250 kWh", spec: "LFP, outdoor enclosure" },
     ar: { name: "خزانة تخزين بطاريات، 250 ك.و.س", spec: "ليثيوم فوسفات الحديد، حاوية خارجية" } },
   { id: "ir-5kv", photo: "products/ir-5kv.jpg", cat: "testing", stock: true,
