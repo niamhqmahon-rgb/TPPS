@@ -11,6 +11,14 @@ TP.contact = {
   phoneHref: "+966568884799"
 };
 
+/* Form delivery: Web3Forms (web3forms.com) emails every form to the address the key was made for
+   (info@tpps-sa.com). The key is public by design; it only allows sending to that address.
+   If the endpoint changes, update connect-src in .htaccess too. */
+TP.forms = {
+  endpoint: "https://api.web3forms.com/submit",
+  key: "18e1266d-b1c1-4e83-b37d-e6120d01c819"
+};
+
 /* Line icons (24×24, stroke). */
 TP.icons = {
   bolt: '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',

@@ -46,6 +46,9 @@ now its own repo.
   incl. a Content-Security-Policy (no inline scripts, no third party scripts, styles, fonts or frames). If you add an
   external service (map, analytics, form backend), extend the CSP for it. Upload a zip of the site files (not the
   notes) and extract it in `public_html`.
+- **Forms** post to Web3Forms (`TP.forms` in `data.js`, `send()` in `app.js`), which emails info@tpps-sa.com
+  (Microsoft Exchange). Free plan, about 250 messages a month. The key is public by design. Hidden `botcheck`
+  honeypot against spam. Endpoint is allowed in `connect-src` in `.htaccess`. Privacy policy names Web3Forms.
 
 ## Rules when editing
 - **Cache busting:** `index.html` loads CSS and JS with `?v=<date><letter>`. Bump it on every change to those files,
@@ -70,6 +73,5 @@ now its own repo.
   with TPPS's real offering. Placeholders in `[brackets]` and yellow "Draft" labels remain.
 - Real photography for product, service, about and team sections; client logos.
 - Confirm the brand typeface, office hours, founding year, certifications, key projects.
-- Forms open the visitor's email app (mailto). Replace `send()` in `app.js` with a real endpoint.
 - Arabic is a draft translation: needs review by a native speaker.
-- Privacy policy and terms are drafts: need legal review (Saudi PDPL). Hosting provider placeholder `[provider]`.
+- Privacy policy and terms are drafts: need legal review (Saudi PDPL). 

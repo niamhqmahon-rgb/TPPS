@@ -193,24 +193,52 @@
   }
 
   /* ---------- Forms ----------
-     No backend yet: forms validate, then open the visitor's email app with the
-     request filled in. Swap send() for a POST to the real endpoint later. */
+     Forms are sent to Web3Forms (TP.forms), which emails them to info@tpps-sa.com.
+     Field names are turned into readable labels; the quote list is added as text. */
+
+  var LABELS = { name: "Name", company: "Company", email: "Email", phone: "Phone", message: "Message",
+    service: "Service", voltage: "Voltage level", site: "Site location", date: "Preferred date",
+    topic: "Topic", city: "Delivery city" };
+
+  // Hidden honeypot field: people never see or tick it, spam bots often do.
+  $$("[data-form]").forEach(function (form) {
+    var trap = document.createElement("input");
+    trap.type = "checkbox"; trap.name = "botcheck"; trap.tabIndex = -1;
+    trap.setAttribute("aria-hidden", "true"); trap.className = "sr-only";
+    form.appendChild(trap);
+  });
 
   function send(kind, data) {
-    var lines = Object.keys(data).filter(function (k) { return data[k]; }).map(function (k) { return k + ": " + data[k]; });
+    var body = {
+      access_key: TP.forms.key,
+      subject: TP.strings.en["mail.subject." + kind] + (lang === "ar" ? " (Arabic site)" : ""),
+      from_name: "TPPS website",
+      botcheck: false
+    };
+    Object.keys(data).forEach(function (k) { if (data[k] && k !== "botcheck") body[LABELS[k] || k] = data[k]; });
+    if (data.email) body.replyto = data.email;
     if (kind === "quote") {
-      lines.push("", "Items:");
-      Object.keys(quote).forEach(function (id) { var p = productById(id); if (p) lines.push("- " + quote[id] + " × " + p.en.name + " (" + p.en.spec + ")"); });
+      body["Items"] = Object.keys(quote).map(function (id) {
+        var p = productById(id);
+        return p ? quote[id] + " × " + p.en.name + " (" + p.en.spec + ")" : "";
+      }).filter(Boolean).join("\n");
     }
-    var href = "mailto:" + TP.contact.email + "?subject=" + encodeURIComponent(t("mail.subject." + kind)) + "&body=" + encodeURIComponent(lines.join("\n"));
-    window.location.href = href;
-    return true;
+    return fetch(TP.forms.endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(body)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok || !j.success) throw new Error(j.message || ("HTTP " + r.status));
+      });
+    });
   }
 
   function onSubmit(e) {
     var form = e.target.closest("[data-form]");
     if (!form) return;
     e.preventDefault();
+    if (form.dataset.busy) return;
     var err = $("[data-error]", form);
     var bad = $$("[required]", form).filter(function (f) { return !f.value.trim(); });
     var email = $('[type="email"]', form);
@@ -227,12 +255,22 @@
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = String(v).trim(); });
     var kind = form.dataset.form;
-    try { send(kind, data); } catch (x) { err.textContent = t("err.send"); err.hidden = false; return; }
-    form.reset();
-    form.hidden = true;
-    var ok = $('[data-sent="' + kind + '"]');
-    if (ok) ok.hidden = false;
-    if (kind === "quote") { quote = {}; save(KEY_QUOTE, quote); renderProducts(); $$("[data-quote-count]").forEach(function (el) { el.textContent = 0; }); $("#quote-items").innerHTML = ""; }
+    if (data.botcheck) return; // a bot ticked the hidden box: quietly drop it
+
+    var btn = $('[type="submit"]', form), label = btn.textContent;
+    form.dataset.busy = "1"; btn.disabled = true; btn.textContent = t("form.sending");
+
+    send(kind, data).then(function () {
+      form.reset();
+      form.hidden = true;
+      var ok = $('[data-sent="' + kind + '"]');
+      if (ok) { ok.hidden = false; ok.setAttribute("tabindex", "-1"); ok.focus(); }
+      if (kind === "quote") { quote = {}; save(KEY_QUOTE, quote); renderProducts(); $$("[data-quote-count]").forEach(function (el) { el.textContent = 0; }); $("#quote-items").innerHTML = ""; }
+    }).catch(function () {
+      err.textContent = t("err.send"); err.hidden = false;
+    }).then(function () {
+      delete form.dataset.busy; btn.disabled = false; btn.textContent = label;
+    });
   }
 
   /* ---------- Router ---------- */
