@@ -80,7 +80,34 @@
     return list.map(function (s) { return '<option value="' + esc(s.en.name) + '">' + esc(pick(s).name) + "</option>"; }).join("");
   }
 
+  // Services page: VoltGenics style photo cards. Each opens the booking form with that service chosen.
+  function serviceCards() {
+    var go = '<span class="svc-card-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+    return TP.services.map(function (s) {
+      var c = pick(s);
+      return '<a href="#/services/booking" class="svc-card" data-pick-service="' + esc(s.en.name) + '">' +
+        '<span class="svc-card-img"><img src="assets/images/' + s.photo + '" alt="" loading="lazy" decoding="async"></span>' +
+        '<span class="svc-card-body"><span class="svc-card-text"><strong>' + esc(c.name) + "</strong><span>" + esc(c.desc) + "</span></span>" + go + "</span></a>";
+    }).join("") +
+      '<a href="#/services/booking" class="svc-card svc-card-cta"><span class="svc-card-body"><span class="svc-card-text"><strong>' +
+      esc(t("svc.card.more.t")) + "</strong><span>" + esc(t("svc.card.more.d")) + "</span></span>" + go + "</span></a>";
+  }
+
+  // Home: a few catalogue products with photos, each linking to its category.
+  var PREVIEW = ["rmu-24", "tx-1000", "xlpe-15", "inv-100"];
+  function productPreview() {
+    return PREVIEW.map(function (id) {
+      var p = TP.products.filter(function (x) { return x.id === id; })[0];
+      if (!p) return "";
+      return '<a class="prod-tile" href="#/products/' + p.cat + '">' +
+        '<span class="prod-tile-img"><img src="assets/images/' + p.photo + '" alt="" loading="lazy" decoding="async"></span>' +
+        '<span class="prod-tile-cat">' + esc(catName(p.cat)) + '</span><strong>' + esc(pick(p).name) + "</strong></a>";
+    }).join("");
+  }
+
   function renderStatic() {
+    $$('[data-render="service-cards"]').forEach(function (el) { el.innerHTML = serviceCards(); });
+    $$('[data-render="product-preview"]').forEach(function (el) { el.innerHTML = productPreview(); });
     $$('[data-render="services"]').forEach(function (el) { el.innerHTML = cards(TP.services, +el.dataset.limit || 0); });
     $$('[data-render="consulting"]').forEach(function (el) { el.innerHTML = cards(TP.consulting); });
     $$('[data-render="service-options"]').forEach(function (el) { var v = el.value; el.innerHTML = options(TP.services); if (v) el.value = v; });
@@ -204,7 +231,7 @@
   $$("[data-form]").forEach(function (form) {
     var trap = document.createElement("input");
     trap.type = "checkbox"; trap.name = "botcheck"; trap.tabIndex = -1;
-    trap.setAttribute("aria-hidden", "true"); trap.className = "sr-only";
+    trap.setAttribute("aria-hidden", "true"); trap.className = "hp-trap";
     form.appendChild(trap);
   });
 
@@ -348,6 +375,10 @@
   document.addEventListener("click", function (e) {
     var el;
     if ((el = e.target.closest("[data-lang]"))) return setLang(el.dataset.lang);
+    if ((el = e.target.closest("[data-pick-service]"))) {
+      var sel = $('[data-form="booking"] [name="service"]');
+      if (sel) sel.value = el.dataset.pickService;
+    }
     if ((el = e.target.closest("[data-add]"))) { var id = el.dataset.add; return setQuote(id, quote[id] ? 0 : 1); }
     if ((el = e.target.closest("[data-remove]"))) return setQuote(el.dataset.remove, 0);
     if ((el = e.target.closest("[data-filter-cat]"))) { filter.cat = el.dataset.filterCat; renderFilters(); return renderProducts(); }

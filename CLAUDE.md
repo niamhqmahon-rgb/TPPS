@@ -37,6 +37,9 @@ now its own repo.
   as About; 612×408, which is iStock preview size: confirm licence and get a larger version); Contact, Privacy and Terms have no photo header.
 - `assets/images/products/<id>.jpg`: catalogue photos (same as the Energy Basics design artifact), `photo` in
   `TP.products`. The battery storage cabinet uses the client supplied solar and wind photo (cropped).
+- Home: business lines, TPPS services (navy), products preview (`PREVIEW` ids in `app.js`), What we deliver, CTA.
+- Services page: VoltGenics style intro beside a 2 column grid of photo cards (`serviceCards()` in `app.js`); each
+  card opens the booking form with that service selected. Consulting steps have arrows, no numbers.
 - About story panel: team photo `services-4.jpg` (engineers in PPE) with the caption "Safe. Reliable. Efficient."
 - `assets/illustrations/hero-grid.svg`: blueprint art for the other page headers (EB style, TPPS colours).
 - `assets/fonts/`: self hosted Montserrat and Noto Kufi Arabic (OFL, licences included).
@@ -55,8 +58,8 @@ now its own repo.
   otherwise visitors (GitHub Pages caches 10 min) get the new HTML with old CSS/JS. Changed images need a new file name.
 - **Every text change goes into both languages** (`data-i18n` key + Arabic in `TP.strings.ar`).
 - Use logical CSS (`inset-inline-start`, `margin-inline`, `text-align: start`) so RTL keeps working.
-- Copy style: short headlines ending in a full stop, eyebrow with an orange square above each heading,
-  navy and orange accent bar under headings, buttons ending in `→`. Avoid dashes in visible copy.
+- Copy style: short headlines ending in a full stop, few eyebrows (client removed most), no accent bars under
+  headings (removed at client request), key words in orange, buttons ending in `→`. Avoid dashes in visible copy.
 - Logo: never stretch, recolour, rotate or add effects (guidelines p. 16). Minimum 250 px wide for the full
   logo on screen where possible; colour logo on light backgrounds, white logo on navy.
 - Privacy: only `tp.lang` in local storage. No analytics, no third party fonts, scripts or embeds.
